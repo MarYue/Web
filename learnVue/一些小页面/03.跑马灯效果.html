@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/vue-2.4.0.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h4>{{ msg }}</h4>
+        <input type="button" value="浪起来" @click="lang">
+        <input type="button" value="低调" @click="stop">
+    </div>
+
+    <script>
+        //在vm实例中想获取data上的数据，或者想调用methods中的方法，必须通过this.属性名 或 this.方法名 来进行访问，这里的this
+          //就是new 出来的实例对象
+        var vm = new Vue ({
+            el: '#app',  //指定控制的元素
+            data: {
+                msg: '猥琐发育，别浪~~！',
+                intervalId: null  //在data上定义定时器Id
+            },
+            methods: {
+                lang(){
+                    //let _this = this
+                    //console.log(this.msg);
+
+                    if(this.intervalId != null) return;
+                    //获取到第一个字符
+                    this.intervalId = setInterval(() => {   //箭头函数 使函数内部的this和外部的this保持一致
+                    var start = this.msg.substring(0,1)
+                    //获取到后面所有字符
+                    var end = this.msg.substring(1)
+                    //重新拼接赋值给msg
+                    this.msg = end + start
+                    
+                }, 400)
+            },
+            stop() {
+                clearInterval(this.intervalId)
+                this.intervalId = null;
+            }
+        }
+        })
+    </script>
+</body>
+</html>
