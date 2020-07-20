@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDoList    </title>
+    <link rel="stylesheet" href="style/index.css">
+    <script src="/lib/vue-2.4.0.js"></script>
+    
+</head>
+
+<body>
+    <header>
+        <h3 class="title">My ToDoList</h3>
+    </header>
+
+    <div id="app">
+        <div class="contTit">要干活啦：
+            <input type="text" 
+                    class="addEvent" 
+                    placeholder="例如：打豆豆  按回车键添加任务" 
+                    v-model="todo" 
+                    @keyup.enter="addTask"/>
+        </div>
+        <ul class="taskCount">
+            <li>还有{{ unCompleted }}个任务未完成</li>
+            <li class="types">
+                <a :class="{active:visibility!=='unCompleted' && visibility!=='completed'}" href="#all">所有滴活</a>
+                <a :class="{active:visibility==='unCompleted'}" href="#unCompleted">没干的活</a>
+                <a :class="{active:visibility==='completed'}" href="#completed">干完的活</a>
+            </li>
+        </ul>
+
+        <div class="contTit">活都在这里咯：</div>
+        <div class="list">
+            <span class="noTaskTip" v-show="!list.length">还没有添加任务哦，啾咪~</span>
+            <ul class="taskList" v-show="list.length">
+                <li class="todo" 
+                v-for="item in filterData" 
+                :class="{completed:item.isComplete,editing:item===editTasks}">
+                    <div class="view">
+                        <input type="checkbox" class="tasks" v-model="item.isComplete">
+                        <label @dblclick="editTask(item)">{{ item.title }}</label>
+                        <button class="del" @click="delTask(item)"></button>
+                        <input type="text" 
+                        class="taskCont"
+                        v-focus="editTasks===item" 
+                        v-model="item.title" 
+                        @blur="editEnd()" 
+                        @keyup.enter="editEnd(item)"
+                        @keyup.esc="cancelEdit(item)" />
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>

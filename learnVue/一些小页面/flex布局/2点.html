@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            background-color: #e7e7e7;
+            display: flex;
+            margin: 16px;
+            padding: 4px;
+            width: 104px;
+            height: 104px;
+            border-radius: 10%;
+            justify-content: space-between;
+        }
+
+        .item {
+            background-color: #333;
+            width: 24px;
+            height: 24px;
+            display: block;
+            margin: 4px;
+            border-radius: 50%;
+        }
+
+        .item:nth-child(2) {
+            background-color: #333;
+            width: 24px;
+            height: 24px;
+            display: block;
+            margin: 4px;
+            border-radius: 50%;
+            align-self: flex-end;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <span class="item"></span>
+        <span class="item"></span>
+    </div>
+</body>
+
+</html>

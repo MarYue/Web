@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/vue-2.4.0.js"></script>
+    <script src="../lib/vue-router-3.0.1.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <!-- 如果在路由中，使用查询字符串给路由传递参数，则不需要修改路由规则的 path 属性 -->
+        <router-link to="/login?id=101&name=zs">登录</router-link>
+        <router-link to="/register">注册</router-link>
+
+        <router-view></router-view>
+
+    </div>
+
+    <script>
+        //组件的模板对象
+        var login = {
+            template: '<h1>登录组件 --- {{ $route.query.id }} --- {{ $route.query.name }}</h1>',
+            created(){
+                // 组件的生命周期钩子函数
+                //console.log(this.$route)
+                console.log(this.$route.query.id)   // 通过这里的query属性传递路由中的参数，可以传递多个参数
+            }
+        }
+        var register = {
+            template: '<h1>注册组件</h1>'
+        }
+
+        // 创建路由对象 VueRouter
+        // 在new 路由对象的时候，可以为构造函数传递一个配置对象
+        var router = new VueRouter({
+            routes: [{
+                    path: '/',
+                    redirect: '/login'
+                },
+                {
+                    path: '/login',
+                    component: login
+                },
+                {
+                    path: '/register',
+                    component: register
+                }
+            ]
+        })
+
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {},
+            router
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/vue-2.4.0.js"></script>
+    <script src="../lib/vue-router-3.0.1.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <router-link to="/login">登录</router-link>
+        <router-link to="/register">注册</router-link>
+        <!-- 容器 -->
+        <router-view></router-view>
+    </div>
+    
+    <script>
+        // 组件的模板对象
+        var login = {
+            template: '<h3>登录组件，是由奔波霸开发的</h3>'
+        }
+        var register = {
+            template: '<h3>注册组件，是由东芭铎开发的</h3>'
+        }
+
+        var router = new VueRouter({
+            routes: [
+                { path: '/', redirec: '/login'},
+                { path: '/login', component: login},
+                { path: '/register', component: register}
+            ],
+            linkActiveClass: 'myactive'   //和激活相关的类
+        })
+
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {},
+            router,
+            watch: {
+                '$route.path': function (newVal, oldVal) { 
+                    //console.log(newVal + '---' + oldVal)
+                    if (newVal === '/login') {
+                        console.log('欢迎进入登录界面')
+                    } else {
+                        console.log('欢迎进入注册界面')
+                    }
+                 }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

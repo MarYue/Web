@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: #F7F7F7;
+}
+
+header {
+    background-color: #DCE2EC;
+    width: 100%;
+    padding: .6rem .4rem .6rem;
+}
+
+#app {
+    width: 100%;
+    padding: .6rem 0 .6rem;
+    .contTit {
+        background-color: #E7E8EB;
+        padding-left: .4rem;
+        line-height: 2.0rem;
+        .addEvent {
+            width: 80%;
+            height: 1.6rem;
+        }
+    }
+    .taskCount {
+        background-color: #F6DCD7;
+        padding: .6rem .6rem;
+        margin-bottom: .6rem;
+    }
+    .list {
+        background-color: #E9B8AC;
+        padding: .6rem .6rem;
+    }
+}
+// .content {
+//     // width: 500px;
+//     // height: 600px;
+//     background-color: #a4c6c7;
+//     display: flex;
+//     .addTit {
+//         color: #333333;
+
+//     }
+//     #todoCont, #doneCont {
+//         background-color: #f8ea9b;
+//     }
+// }

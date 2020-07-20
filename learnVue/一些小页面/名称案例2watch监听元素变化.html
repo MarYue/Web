@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="lib/vue-2.4.0.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 要监听到文本框的改变，才知道何时拼接 fullname -->
+        <input type="text" v-model="firstname" > +
+        <input type="text" v-model="lastname" > =
+        <input type="text" v-model="fullname">
+    </div>
+
+    <script>
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                firstname: '',
+                lastname: '',
+                fullname: ''
+            },
+            methods: {},
+
+            watch: {
+                // 使用这个属性，可以监视 data 中指定数据的变化，然后触发这个 watch 中对应的function
+                // 'first-name' 中间有横线要用 '' 包裹
+                firstname: function (newVal, oldVal) { 
+                    //console.log('监视到了firstname变化')
+                    //this.fullname = this.firstname + '-' + this.lastname
+                    // 也可以用 newVal 和 oldVal 两个参数
+                    this.fullname = newVal + '-' + this.lastname   // oldVal这里没用到，可以不定义
+                },
+                lastname: function (newVal, oldVal) { 
+                    //console.log('监视到了lastname变化')
+                    //this.fullname = this.firstname + '-' + this.lastname
+                    this.fullname = this.firstname + '-' + newVal
+                }
+
+            }
+        })
+    </script>
+</body>
+</html>
