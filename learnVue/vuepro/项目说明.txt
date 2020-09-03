@@ -1,0 +1,5 @@
+1.控制台进入项目目录  npm install 导入node_modules
+2.npm run dev运行项目
+
+
+npm命令需要安装node.js

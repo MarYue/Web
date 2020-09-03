@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="main.js"></script> -->
+    <script src="/dist/bundle.js"></script>
+</head>
+<body>
+    <ul>
+        <li>第1</li>
+        <li>第2</li>
+        <li>第3</li>
+        <li>第4</li>
+        <li>第5</li>
+        <li>第6</li>
+        <li>第7</li>
+        <li>第8</li>
+        <li>第9</li>
+    </ul>
+</body>
+</html>
+
+<!-- 注意注意注意！！！ webpack 版本过高(v4.43.0)，这里的打包语句为： npx webpack 被打包的文件路径 -o 要打包输出的文件路径 --mode development -->
+<!-- 另外，运行 npm run dev 默认打包的文件为 src/index.js ，输出为 dist/main.js -->
+
+<!-- 使用 webpack-dev-server 这个工具可以实现自动打包编译的功能 -->
+<!-- 1.运行 npm i webpack-dev-server -D 把这个工具安装到本地开发依赖 -->
+<!-- 2.安装完毕后，这个工具的命令用法和 webpack 的命令用法完全一样 -->
+<!-- 3.由于是在项目中安装的 webpack-dev-server，所以不能把他当作脚本命令在 powershell中直接运行，只有 -g 全局安装的才可以 -->
+<!--    可以在 package.json 配置文件中的 "script" 中配置 "dev": "webpack-dev-server" -->
+<!-- 4.这个工具如果想正常运行，要求在本地项目中，必须安装webpack -->
+
+<!-- 但是，这里依然编译不成功。可能是因为 webpack 版本高？？？ -->
+<!-- 虽然报错，但是代码改变后进行保存， 浏览器预览可以实时变化。。后续发现并没有 无法显示样式。。？？？ -->
