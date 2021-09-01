@@ -5,10 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="lib/vue-2.4.0.js"></script>
+    <style>
+        .active {
+            background-color: #ddd;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
-       <p v-for="(user, i) in list">id: {{ user.id }} --- 姓名：{{ user.name }} --- 索引：{{ i }}</p>
+       <p v-for="(user, i) in list" :key="i" :class="{active: selected === i}" @click="selected = i">id: {{ user.id }} --- 姓名：{{ user.name }} --- 索引：{{ i }}</p>
     </div>
 
     <script>
@@ -20,7 +26,8 @@
                     { id:2, name: '老二'},
                     { id:3, name: '老三'},
                     { id:4, name: '老四'}
-                ]
+                ],
+                selected: 0
             }
         })
     </script>

@@ -25,6 +25,7 @@
             },
             methods: {},
 
+            // 默认情况下，watch不会立刻执行。初始化不执行
             watch: {
                 // 使用这个属性，可以监视 data 中指定数据的变化，然后触发这个 watch 中对应的function
                 // 'first-name' 中间有横线要用 '' 包裹
@@ -41,7 +42,17 @@
                 }
 
             }
+            // 带属性的watch
+            // watch: {
+            //     immediate: true,  // 初始化时是否立刻执行
+            //     // deep: true,  // 深度监听。性能损耗多
+            //     handler(newV, oladV) {
+
+            //     }
+            // }
         })
+        
+        // watch和computed
     </script>
 </body>
 </html>
